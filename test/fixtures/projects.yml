@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_name: MyString
+  duration: 1
+  team_size: 1
+  lead_name: MyString
+  start_date: 2022-09-19
+
+two:
+  project_name: MyString
+  duration: 1
+  team_size: 1
+  lead_name: MyString
+  start_date: 2022-09-19

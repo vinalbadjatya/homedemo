@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  f_date: 2022-09-19
+  t_date: 2022-09-19
+  day: 1
+  reason: MyString
+
+two:
+  f_date: 2022-09-19
+  t_date: 2022-09-19
+  day: 1
+  reason: MyString

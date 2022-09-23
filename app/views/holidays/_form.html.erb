@@ -1,0 +1,29 @@
+<%= form_with model: @holiday, local: true do |form| %>
+<div class="col-md-3">
+<h3 style="background-color:powderblue;">Calendar</h3>
+</div>
+
+<div class="col-md-3">
+<p>
+    <%= form.label :ocassion%><br>
+    <%= form.text_area :ocassion,class:"form-label" %>
+</p>
+</div>
+<div class="col-md-3">
+<p>
+    <%= form.label :day %><br>
+    <%= form.text_area :day,class:"form-label" %>
+</p>
+</div>
+<div class="col-md-3">
+<p>
+    <%= form.label :date %><br>
+    <%= form.date_field :on_date, class: "form-label" %>
+</p>
+</div>
+
+<p>
+    <%= form.submit class:"btn btn-primary" %><hr>
+</p>
+</div>
+<%end%>

@@ -1,0 +1,43 @@
+<div class = "container">
+<br>
+<div class= "col-md-2">
+<h3 style="background-color:powderblue;"> All Leaves</h3>
+</div><br>
+
+</div>
+<div class= "col-md-8">
+<table class="table table-bordered table-striped table-hover">
+<tr>
+<%= form_for "", url: user_breaks_path, role: "search", method: :get do %>
+ <% text_field_tag :search, @search_term, placeholder: "search....", class: "form-control"%>
+<% end %><br>
+  
+
+    <th>Starting_date</th>
+    <th>End_date</th>
+    <th>Day</th>
+    <th>Reasons</th>
+    <th></th>
+    <th>Action</th>
+    <th></th>
+  </tr>
+    <% @bks.each do |breaks| %>
+    <tr>
+      <% if  current_user.role.code == 'admin' || breaks.user_id == current_user.id  %>
+      <td><%= breaks.f_date %></td>
+      <td><%= breaks.t_date %></td>
+      <td><%= breaks.day%></td> 
+      <td><%= breaks.reason%></td> 
+      <td><%= link_to 'Show',user_break_path(@user,breaks),class: "btn btn-info btn-sm" %></td>
+      <td><%= link_to 'Edit', edit_user_break_path(@user,breaks),class: "btn btn-info btn-sm" %></button></td>
+      <td><%= link_to 'Destroy', user_break_path(@user,breaks),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },class: "btn btn-info btn-sm" %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </div>
+</table>
+</div>
+
+

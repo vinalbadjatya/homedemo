@@ -1,0 +1,17 @@
+<br>
+<div class="card text-white bg-dark mb-3-3" style="width: 18rem;">
+  <div class="card-header">
+    Salary Informations
+  </div>
+  <ul class="card-title">
+    <li class="list-group-item">Ammount:<br>
+     <%=  @salary.salary_amount %></li>
+     <li class="list-group-item">salary_date:<br>
+      <%= @salary.salary_date %></li>
+ </ul>
+  <% if current_user.role.code  == "admin" %>
+
+<button type="button" class="btn btn-outline-primary"> <%= link_to 'Edit', edit_user_salary_url %>  </button>
+<% else %>
+<button type="button" class="btn btn-secondary btn-sm"> <%= link_to 'Back', user_salaries_path%> </button>
+<% end %>

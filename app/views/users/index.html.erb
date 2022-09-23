@@ -1,0 +1,39 @@
+  <div class = "container">
+<br>
+<div class= "col-md-3">
+<h3 style="background-color:powderblue;">All Employee Data</h3>
+</div>
+
+
+<div class= "col-md-9">
+<table class="table table-bordered table-striped table-hover"><br>
+  <tr>
+ 
+  <%= form_for "", url: users_path, role: "search", method: :get do %>
+  <% text_field_tag :search, @search_term, placeholder: "search....", class: "form-control" %>
+  <% end %>
+  <br>
+
+    <th>Email</th>
+    <th>Employee_Name</th>
+     <th>mobile_no</th>
+     <th>Date_Of_Birth</th>
+     <th>Skills</th>
+     
+  </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.user_name %></td>
+      <td><%= user.user_mobileno %></td>
+      <td><%= user.date_of_birth %></td>
+      <td><%= user.skills %></td>
+       <%# <td><%= link_to 'Show',   user_path(user), class:"btn btn-info btn-sm" %>
+       <%# <td><%= link_to 'Edit',   edit_user_user_path(@user,user) , class:"btn btn-info btn-sm"%>
+       <%# <td><%= link_to 'Destroy',  user_user_path(@user,user),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } , class:"btn btn-info btn-sm"%>
+    </tr>
+  <% end %>
+</div>
+</table>

@@ -1,0 +1,97 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2022_09_23_064955) do
+
+  create_table "breaks", force: :cascade do |t|
+    t.date "f_date"
+    t.date "t_date"
+    t.integer "day"
+    t.string "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "to"
+    t.index ["user_id"], name: "index_breaks_on_user_id"
+  end
+
+  create_table "emp_attendances", force: :cascade do |t|
+    t.datetime "working_hours"
+    t.string "project_name"
+    t.string "task_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "mail_to"
+    t.datetime "status_date"
+    t.index ["user_id"], name: "index_emp_attendances_on_user_id"
+  end
+
+  create_table "holidays", force: :cascade do |t|
+    t.string "ocassion"
+    t.string "day"
+    t.date "on_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "project_name"
+    t.integer "duration"
+    t.integer "team_size"
+    t.string "lead_name"
+    t.date "start_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "employee_name"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "salaries", force: :cascade do |t|
+    t.integer "salary_amount"
+    t.date "salary_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "employee_name"
+    t.index ["user_id"], name: "index_salaries_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_name"
+    t.integer "user_mobileno"
+    t.date "date_of_birth"
+    t.string "skills"
+    t.boolean "admin", default: false
+    t.integer "role_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
+  end
+
+end

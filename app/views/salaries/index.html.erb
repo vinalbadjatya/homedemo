@@ -1,0 +1,38 @@
+<div class = "container">
+<br>
+<div class= "col-md-3">
+<h3 style="background-color:powderblue;"> Salary Updates</h3>
+</div>
+<div class= "col-md-6">
+<table class="table table-bordered  table-striped table-hover">
+ 
+  <%= form_for "", url: user_salaries_path, role: "search", method: :get do %>
+  <% text_field_tag :search, @search_term, placeholder: "search....", class: "form-control" %>
+  <% end %>
+  <tr><br>
+
+    <th>Salary_Amount</th>
+    <th>Date</th>
+    <th>Employee_Name</th>
+    <th>Action</th>
+   
+  </tr>
+    <% @salaries.each do |salary| %>
+    <tr>
+      <% if  current_user.role.code == 'admin' || salary.user_id == current_user.id  %>
+      <td><%= salary.salary_amount %></td>
+      <td><%= salary.salary_date %></td>
+      <td><%= salary.employee_name %></td>
+
+       <td><%= link_to 'Show', user_salary_path(@user,salary),class:"btn btn-info btn-sm" %></td>
+       <% if current_user.role.code  == "admin" %>
+       <td><%= link_to 'Edit',  edit_user_salary_path(@user,salary), class:"btn btn-info btn-sm" %></td>
+       <td><%= link_to 'Destroy', user_salary_path(@user,salary),
+          method: :delete,
+          data: { confirm: 'Are you sure?' },class:"btn btn-info btn-sm" %> </td>
+        <% end %>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+</div>

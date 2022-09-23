@@ -1,0 +1,20 @@
+<br>
+<div class="card text-white bg-dark mb-3-3" style="width: 18rem;">
+  <div class="card-header">
+    Project Status
+  </div>
+  <ul class="card-title">
+    <li class="list-group-item">Project Name:<br>
+     <%= @project.project_name %></li>
+     <li class="list-group-item">Duration:<br>
+      <%=  @project.duration  %></li>
+    <li class="list-group-item">Team Size: <br>
+     <%=  @project.team_size%></li> 
+    <li class="list-group-item">Lead Name: <br>
+     <%=  @project.lead_name %></li></li>
+      <li class="list-group-item">Start Date: <br>
+     <%=  @project.start_date %></li></li>
+
+  </ul>
+<button type="button" class="btn btn-outline-primary"> <%= link_to 'Edit', edit_user_project_path %>  </button>
+<button type="button" class="btn btn-secondary btn-sm"> <%= link_to 'Back', user_projects_path %> </button>

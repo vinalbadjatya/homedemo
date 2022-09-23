@@ -1,0 +1,52 @@
+<div class="container">
+<%= form_for  [@user, @attendance ] do |form| %><br>
+
+<div class="col-md-2">
+<h3 style="background-color:powderblue;">Daily Status</h3>
+</div>
+<div class="col-md-3">
+<p>
+    <%= form.label :Working_hours %><br>
+    <%= form.text_field :working_hours, placeholder: "working hours" ,class:"form-control" %>
+</p>
+</div>
+<div class="col-md-3">
+<p>
+    <%= form.label :Project_name %>
+    <%= form.text_field :project_name,  placeholder: "Project Name",class:"form-control" %>
+</p>
+</div>
+<div class="col-md-3">
+<p>
+    <%= form.label :Task %>
+    <%= form.text_field :task_description,  placeholder: "About Task",class:"form-control" %>
+</p>
+</div>
+<div class="col-md-3">
+<p>
+    <%= form.label :Mail_To %><br>
+     <%= form.text_field :mail_to,  placeholder: "Email ", class:"form-contro" %>
+ </p>
+</div> 
+
+<div class="col-md-3">
+<p>
+    <%= form.label :Status_Date %><br>
+     <%= form.text_field :status_date, class:"form-contro" %>
+ </p>
+</div> 
+<div class="col-md-3">
+<p>
+  
+    <%= form.number_field :user_id, id: :emp_attendance_user_id, type: :hidden , value:  current_user.id, class:"form-label" %>
+</p> 
+</div>
+
+<p>
+    <%= form.submit class:"btn btn-info btn-sm" %>
+    <%= link_to 'Back',user_emp_attendances_path, class:"btn btn-info btn-sm" %>
+    
+</p>
+</div>
+
+<%end%>
