@@ -3,8 +3,6 @@ class Break < ApplicationRecord
 
     validates :reason, presence: true
 
-    validates :day, presence: true
-
     after_create :break_send
     
     private

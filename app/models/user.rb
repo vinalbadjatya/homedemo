@@ -18,13 +18,7 @@ class User < ApplicationRecord
 
   has_many :breaks, dependent: :destroy
 
-  validates :user_name, presence: true
-
-  validates :skills, presence: true
-
-  validates :user_mobileno, presence: true
-
-  validates  :date_of_birth, presence: true
+  validates :user_name, :skills, :user_mobileno , :date_of_birth, presence: true
 
   validates :user_mobileno, numericality: { only_integer: true }, length: {is: 10}
 
@@ -41,5 +35,4 @@ class User < ApplicationRecord
   def self.search_by(search_term)
     where("LOWER(user_name) LIKE :search_term OR LOWER(email) LIKE :search_term", search_term: "%#{search_term.downcase}")
   end
-
 end

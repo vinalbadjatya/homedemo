@@ -20,9 +20,8 @@
     <th>Lead_name</th>
     <th>Start_date</th>
     <th>User_Name</th>
-    <th></th>
     <th>Action</th>
-    <th></th>
+
   </tr>
     <% @projects.each do |project| %>
     <% if  current_user.role.code == 'employee' && project.user_id == current_user.id  %>

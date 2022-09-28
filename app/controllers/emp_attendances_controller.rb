@@ -16,7 +16,7 @@ class EmpAttendancesController < ApplicationController
     end
 
     def create 
-        @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
+        @attendance = current_user.emp_attendances.new(attendance_params.merge(user_id: @user.id))
         if @attendance.save!
             redirect_to  user_emp_attendance_path(@user.id,@attendance)
         else
@@ -25,15 +25,15 @@ class EmpAttendancesController < ApplicationController
     end
 
     def show
-        @attendance = EmpAttendance.find(params[:id])
+        @attendance =  current_user.emp_attendances.find(params[:id])
     end
 
     def edit
-        @attendance= EmpAttendance.find(params[:id])
+        @attendance=  current_user.emp_attendances.find(params[:id])
     end
 
     def update
-       @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
+       @attendance =  current_user.emp_attendances.new(attendance_params.merge(user_id: @user.id))
         if @attendance.update(attendance_params)
             redirect_to  user_emp_attendance_path(@user,@attendance)
         else
@@ -42,7 +42,7 @@ class EmpAttendancesController < ApplicationController
     end
 
     def destroy
-        @attendance =  EmpAttendance.find(params[:id])
+        @attendance =   current_user.emp_attendances.find(params[:id])
         @attendance.destroy
         redirect_to user_emp_attendances_path
     end
@@ -54,6 +54,6 @@ class EmpAttendancesController < ApplicationController
     end
     
     def attendance_params
-        params.require(:emp_attendance).permit(:working_hours, :project_name, :task_description, :user_id, :mail_to, :status_date)
+        params.require(:emp_attendance).permit(:working_hours, :project_name, :task_description, :mail_to, :status_date)
     end
 end

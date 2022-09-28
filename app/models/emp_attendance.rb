@@ -12,7 +12,7 @@ class EmpAttendance < ApplicationRecord
     private
 
     # def check_status?
-    #      byebug
+    #     # byebug
     #     if created_at.present?
     #         if status_date.to_date == created_at.to_date
     #             redirect_to user_emp_attendance_path(current_user.id)
