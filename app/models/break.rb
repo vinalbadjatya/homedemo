@@ -1,7 +1,7 @@
 class Break < ApplicationRecord
     belongs_to :user
 
-    validates :reason, presence: true
+    validates :reason, :day, presence: true
 
     after_create :break_send
     
