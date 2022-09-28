@@ -8,10 +8,10 @@ class EmpAttendancesController < ApplicationController
     end
 
     def index 
-    @attendances = EmpAttendance.all
+      @attendances = EmpAttendance.all
         if params[:search]
-        @search_term = params[:search]
-        @attendances=  @attendances.search_by(@search_term)
+          @search_term = params[:search]
+          @attendances=  @attendances.search_by(@search_term)
         end
     end
 
