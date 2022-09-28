@@ -1,20 +1,22 @@
 class EmpAttendancesController < ApplicationController
+    load_and_authorize_resource  param_method: :attendance_params
+
     before_action :get_user
+
     def new
     @attendance = EmpAttendance.new
     end
 
     def index 
     @attendances = EmpAttendance.all
-    if params[:search]
+        if params[:search]
         @search_term = params[:search]
         @attendances=  @attendances.search_by(@search_term)
-    end
+        end
     end
 
     def create 
-
-     @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
+        @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
         if @attendance.save!
             redirect_to  user_emp_attendance_path(@user.id,@attendance)
         else
@@ -31,14 +33,13 @@ class EmpAttendancesController < ApplicationController
     end
 
     def update
-        @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
-            if @attendance.update(attendance_params)
-                redirect_to  user_emp_attendance_path(@user,@attendance)
-            else
-                render 'edit'
-            end
+       @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
+        if @attendance.update(attendance_params)
+            redirect_to  user_emp_attendance_path(@user,@attendance)
+        else
+            render 'edit'
+        end
     end
-
 
     def destroy
         @attendance =  EmpAttendance.find(params[:id])
@@ -52,7 +53,6 @@ class EmpAttendancesController < ApplicationController
         @user = User.find(params[:user_id])
     end
     
-
     def attendance_params
         params.require(:emp_attendance).permit(:working_hours, :project_name, :task_description, :user_id, :mail_to, :status_date)
     end

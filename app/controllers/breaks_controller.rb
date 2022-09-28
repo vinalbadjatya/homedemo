@@ -1,14 +1,19 @@
 class BreaksController < ApplicationController
+
+    load_and_authorize_resource
+
     before_action :get_user 
+
     def new
       @bk= Break.new
-     end
+    end
   
     def create
       @bk = Break.new(break_params.merge(user_id: @user.id))
-      #byebug
+    #   @a
+    #   byebug
       if @bk.save!
-          redirect_to user_break_path(@user,@bk)
+          redirect_to user_break_path(@user, @bk)
       else
           render 'new'
       end
@@ -16,9 +21,11 @@ class BreaksController < ApplicationController
   
     def index
         @bks = Break.all
+        #@a = "abc"
+        # byebug
         if params[:search]
             @search_term = params[:search]
-           @bks = @bks.search_by(@search_term)
+            @bks = @bks.search_by(@search_term)
         end
     end
   
@@ -28,34 +35,33 @@ class BreaksController < ApplicationController
   
     def update
         @bk = Break.new(break_params.merge(user_id: @user.id))
-            if @break.update(break_params)
-                redirect_to user_break_path(@user,@bk)
-            else
-                render 'edit'
-            end
-      end
+        if @break.update(break_params)
+            redirect_to user_breaks_path(@user,@bk)
+        else
+            render 'edit'
+        end
+    end
   
   
-      def show
-        
+    def show
         @bk = Break.find(params[:id])
 
-      end
+    end
   
-      def destroy
-          @bk =  Break.find(params[:id])
-          @bk.destroy
-          redirect_to user_breaks_path
-      end
+    def destroy
+        @bk =  Break.find(params[:id])
+        @bk.destroy
+        redirect_to user_breaks_path
+    end
       
-      private
+    private
      
-      def get_user 
-         @user = User.find(params[:user_id])
+    def get_user 
+        @user = User.find(params[:user_id])
         
-      end
+    end
 
-      def break_params
-          params.require(:break).permit(:f_date, :t_date,:day, :reason,:user_id, :to)
-      end
+    def break_params
+        params.require(:break).permit(:f_date, :t_date,:day, :reason,:user_id, :to)
+    end
 end

@@ -1,3 +1,4 @@
+
 <br>
 <div class="card text-white bg-dark mb-3-3" style="width: 18rem;">
   <div class="card-header">
@@ -8,8 +9,10 @@
      <%=  @salary.salary_amount %></li>
      <li class="list-group-item">salary_date:<br>
       <%= @salary.salary_date %></li>
+      <li class="list-group-item">employee_name:<br>
+      <%= @salary.employee_name %></li>
  </ul>
-  <% if current_user.role.code  == "admin" %>
+<% if current_user.role.code  == "admin" %>
 
 <button type="button" class="btn btn-outline-primary"> <%= link_to 'Edit', edit_user_salary_url %>  </button>
 <% else %>

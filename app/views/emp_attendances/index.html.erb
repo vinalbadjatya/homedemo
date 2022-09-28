@@ -30,11 +30,8 @@
       <td><%= eattendance.task_description%></td>
       <td><%= eattendance.mail_to%></td>
       <td><%= eattendance.status_date%></td>
-        <td><%= link_to 'Show',  user_emp_attendance_path(@user,eattendance),class: "btn btn-info btn-sm"%></td>
-        <%# <td><%= link_to 'Edit',   edit_user_emp_attendance_path(@user,eattendance),class: "btn btn-info btn-sm"%>
-        <%# <td><%= link_to 'Destroy', user_emp_attendance_path(@user,eattendance),
-            method: :delete,
-            data: { confirm: 'Are you sure?' } ,class:"btn btn-info btn-sm"%>
+      <td><%= link_to 'Show',  user_emp_attendance_path(@user,eattendance),class: "btn btn-info btn-sm"%></td>
+    
       <%end%>
     </tr>
   <% end %>

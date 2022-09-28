@@ -1,5 +1,9 @@
 class ProjectsController < ApplicationController
+
+    load_and_authorize_resource
+
     before_action :get_user
+
     def new
        @project = Project.new
     end
@@ -15,12 +19,11 @@ class ProjectsController < ApplicationController
     end
 
     def index
-        @projects = Project.all
+       @projects = Project.all
         if params[:search]
             @search_term = params[:search]
             @projects = @projects.search_by(@search_term)
         end
-        
     end
 
     def show
@@ -33,13 +36,12 @@ class ProjectsController < ApplicationController
 
     def update
         @project = Project.new(project_params.merge(user_id: @user.id))
-            if @Project.update(project_params)
-                redirect_to user_project_path(@user,@Project)
-            else
-                render 'edit'
-            end
+        if @project.update(project_params)
+            redirect_to user_projects_path(@user,@project)
+        else
+            render 'edit'
+        end
     end
-
 
     def destroy
         @project = Project.find(params[:id])
@@ -47,7 +49,6 @@ class ProjectsController < ApplicationController
         redirect_to  user_projects_path
     end
 
-    
     private
    
     def get_user 
@@ -55,6 +56,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:project_name, :duration, :team_size, :lead_name, :start_date, :user_id, :project_name)
+        params.require(:project).permit(:project_name, :duration, :team_size, :lead_name, :start_date, :user_id,:employee_name)
     end
 end

@@ -1,55 +1,55 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!,only: [:show]
+
+  # before_action :authenticate_user!,only: [:show]
   def new
     @user = User.new
-end
+  end
 
-def index
-  @users = User.all
-  if params[:search]
+  def index
+    @users = User.all
+    if params[:search]
     @search_term = params[:search]
     @users = @users.search_by(@search_term)
-end
-end
+    end
+  end
 
 
-def edit
+  def edit
    @user = current_user
-end
+  end
 
-def show
+  def show
     @user = User.find(params[:id])
-end
+  end
 
-def create
+  def create
     @user = User.create(user_params)
     if @user.save
         redirect_to @user
     else
         render 'new'
     end
-end
+  end
 
-def update
+  def update
     @user = User.find(params[:id])
-        if @user.update(user_params)
-          redirect_to @user
-        else
-          render 'edit'
-        end
-end
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
 
-def delete 
+  def delete 
     @user = User.find(params[:id])
     @user.destroy
     redirect_to  user_breaks
+  end
 
-end
+  private
 
-
-
-private
   def user_params
-    params.require(:user).permit(:email,:role)
-end
+    params.require(:user).permit(:email,:role,:user_name,:user_mobileno,:date_of_birth,:skills, :role_id)
+  end
+  
 end

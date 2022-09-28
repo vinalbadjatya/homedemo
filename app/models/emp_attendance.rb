@@ -27,10 +27,6 @@ class EmpAttendance < ApplicationRecord
     end
 
     def welcome_send 
-
         AdminMailer.welcome_send(self.mail_to).deliver_now
     end
-
-  
-
 end

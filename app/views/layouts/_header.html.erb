@@ -30,12 +30,12 @@
 
     <%=link_to 'Attendance', user_emp_attendances_path(current_user.id),class: "nav-link"%>
 
-     <%=link_to 'Salary',  user_salaries_path(current_user.id),class: "nav-link"%> 
-     <%=link_to 'Details_Of_Employies',  users_path(current_user.id),class: "nav-link"%> 
+     <%=link_to 'Salary',  new_user_salary_path(current_user.id),class: "nav-link"%> 
+     <%=link_to 'Details_Of_Employies',   user_registration_path(current_user.id),class: "nav-link"%> 
  
     <%=link_to 'Holiday',  holidays_path(:id),class: "nav-link"%>
 
-    <%=link_to 'Project',  new_user_projects_path(current_user.id),class: "nav-link"%> 
+    <%=link_to 'Project',  new_user_project_path(current_user.id),class: "nav-link"%> 
 
     <% else %>
 

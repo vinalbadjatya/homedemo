@@ -5,5 +5,8 @@ class AdminMailer < ApplicationMailer
       mail to: @email, subject: "attendace Remainder", from: 'saloni@gmail.com'
     end
 
-
- end
+    def break_send(email)
+      @email = email
+      mail to: @email, subject: "attendace Remainder", from: 'saloni@gmail.com'
+    end
+end

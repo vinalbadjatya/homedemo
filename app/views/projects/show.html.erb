@@ -14,7 +14,8 @@
      <%=  @project.lead_name %></li></li>
       <li class="list-group-item">Start Date: <br>
      <%=  @project.start_date %></li></li>
-
+        <li class="list-group-item">employee_name: <br>
+     <%=  @project.employee_name %></li></li>
   </ul>
 <button type="button" class="btn btn-outline-primary"> <%= link_to 'Edit', edit_user_project_path %>  </button>
 <button type="button" class="btn btn-secondary btn-sm"> <%= link_to 'Back', user_projects_path %> </button>

@@ -1,4 +1,7 @@
 class HolidaysController < ApplicationController
+
+    load_and_authorize_resource
+
     def new
         @holiday = Holiday.new
     end
@@ -23,12 +26,12 @@ class HolidaysController < ApplicationController
 
     def update
         @holiday = Holiday.find(params[:id])
-            if @holiday.update(holiday_params)
-              redirect_to @holiday
-            else
-              render 'edit'
-            end
-      end
+        if @holiday.update(holiday_params)
+            redirect_to @holiday
+        else
+            render 'edit'
+        end
+    end
 
     def destroy
         @holiday = Holiday.find(params[:id]) 
@@ -37,6 +40,7 @@ class HolidaysController < ApplicationController
     end
 
     private
+    
     def holiday_params
         params.require(:holiday).permit(:ocassion,:day,:on_date)
     end

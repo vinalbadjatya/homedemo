@@ -1,11 +1,12 @@
+
 <br><div class="card text-white bg-dark mb-3-3" style="width: 18rem;">
   <div class="card-header">
     Leave Status
   </div>
   <ul class="card-title">
-    <li class="list-group-item">From date:<br>
+    <li class ="list-group-item">From date:<br>
      <%= @bk.f_date %></li>
-     <li class="list-group-item">To date:<br>
+     <li class ="list-group-item">To date:<br>
       <%= @bk.t_date %></li>
     <li class="list-group-item">Day: <br>
      <%= @bk.day %></li> </li>
@@ -15,4 +16,3 @@
   </ul>
 <button type="button" class="btn btn-outline-primary"> <%= link_to 'Edit', edit_user_break_path(@bk) %>  </button>
 <button type="button" class="btn btn-secondary btn-sm"> <%= link_to 'Back', user_breaks_path(@bk)%> </button>
-

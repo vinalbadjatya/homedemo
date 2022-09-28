@@ -4,16 +4,16 @@ class ApplicationController < ActionController::Base
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+     rescue_from CanCan::AccessDenied do |exception|
+          render json: { warning: exception, status: 'authorization_failed'}
+
+     end
+
     protected
 
-         def configure_permitted_parameters
-              devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit( :email, :password,:role,:user_name,:user_mobileno,:date_of_birth,:skills)}
+     def configure_permitted_parameters
+          devise_parameter_sanitizer.permit(:sign_up, keys: [ :email, :password,:role,:user_name,:user_mobileno,:date_of_birth,:skills])   
+     end
 
-              devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :current_password,:user_name,:user_mobileno,:date_of_birth,:skills)}
-         end
-         
-         def configure_permitted_parameters
-               devise_parameter_sanitizer.permit(:sign_up, keys: [:role_id])
-         end
 end
 

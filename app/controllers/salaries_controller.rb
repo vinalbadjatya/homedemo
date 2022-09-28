@@ -1,9 +1,10 @@
 class SalariesController < ApplicationController
-    before_action  :is_admin? ,only: [:create ,:update ,:edit ,:new]
+    load_and_authorize_resource
+
     before_action :get_user
 
     def new
-       @salary= Salary.new
+       @salary = Salary.new
     end
 
     def create
@@ -34,13 +35,12 @@ class SalariesController < ApplicationController
 
     def update
         @salary = Salary.new(salary_params.merge(user_id: @user.id))
-            if @salary.update(salary_params)
-                redirect_to user_salary_path(@user,@salary)
-            else
-                render 'edit'
-            end
+        if @salary.update(salary_params)
+            redirect_to user_salary_path(@user,@salary)
+        else
+            render 'edit'
+        end
     end
-
 
     def destroy
         @salary = Salary.find(params[:id])
@@ -55,10 +55,7 @@ class SalariesController < ApplicationController
     end
 
     def salary_params
-        params.require(:salary).permit(:salary_amount, :salary_date, :user_id)
+        params.require(:salary).permit(:salary_amount, :salary_date, :employee_name,:user_id)
     end
 
-    def is_admin?
-        current_user.role.code == 'admin'
-    end
 end
