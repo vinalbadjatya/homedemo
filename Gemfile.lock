@@ -214,6 +214,8 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    shoulda-callback-matchers (1.1.4)
+      activesupport (>= 3)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -275,6 +277,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-callback-matchers (~> 1.1, >= 1.1.4)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

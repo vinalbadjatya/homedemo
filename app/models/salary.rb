@@ -8,9 +8,9 @@ class Salary < ApplicationRecord
   private
 
   def default_salary
-    byebug
     if salary_amount.nil?
-      self.salary_amount = 45000 unless salary_amount.blank?
+      # byebug
+      self.salary_amount = 45000
     end
   end
       
