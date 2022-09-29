@@ -1,5 +1,5 @@
 class EmpAttendance < ApplicationRecord
-    belongs_to :user
+  belongs_to :user
 
     validates :project_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 

@@ -9,7 +9,7 @@ class BreaksController < ApplicationController
     end
   
     def create
-      @bk = current_user.breaks.new(break_params.merge(user_id: @user.id))
+      @bk = Break.new(break_params.merge(user_id: @user.id))
       if @bk.save!
           redirect_to user_break_path(@user, @bk)
       else
@@ -26,11 +26,11 @@ class BreaksController < ApplicationController
     end
   
     def edit 
-        @bk = current_user.break.find(params[:id])
+        @bk = Break.find(params[:id])
     end
   
     def update
-        @bk = current_user.breaks.new(break_params.merge(user_id: @user.id))
+        @bk = Break.new(break_params.merge(user_id: @user.id))
         if @break.update(break_params)
             redirect_to user_breaks_path(@user,@bk)
         else
@@ -40,12 +40,12 @@ class BreaksController < ApplicationController
   
   
     def show
-        @bk = current_user.breaks.find(params[:id])
+        @bk = Break.find(params[:id])
 
     end
   
     def destroy
-        @bk =  current_user.breaks.find(params[:id])
+        @bk =  Break.find(params[:id])
         @bk.destroy
         redirect_to user_breaks_path
     end
@@ -58,6 +58,6 @@ class BreaksController < ApplicationController
     end
 
     def break_params
-        params.require(:break).permit(:f_date, :t_date,:day, :reason, :to)
+        params.require(:break).permit(:f_date, :t_date,:day, :reason, :to, :user_id)
     end
 end

@@ -1,10 +1,9 @@
 require 'rails_helper'
-RSpec.describe BreaksController do
+describe BreaksController, type: :controller do
   describe "GET index" do
-    it "renders the index template " do
-      bk = Break.create
+    it “returns a successful response” do
       get :index
-      expect(response).to render_template("index")
+      expect(bk).to be_successful
     end
   end
 end
