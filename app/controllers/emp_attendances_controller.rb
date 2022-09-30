@@ -16,7 +16,7 @@ class EmpAttendancesController < ApplicationController
     end
 
     def create 
-        @attendance = current_user.emp_attendances.new(attendance_params.merge(user_id: @user.id))
+        @attendance = EmpAttendance.new(attendance_params.merge(user_id: @user.id))
         if @attendance.save!
             redirect_to  user_emp_attendance_path(@user.id,@attendance)
         else
@@ -25,15 +25,15 @@ class EmpAttendancesController < ApplicationController
     end
 
     def show
-        @attendance =  current_user.emp_attendances.find(params[:id])
+        @attendance =  EmpAttendance.find(params[:id])
     end
 
     def edit
-        @attendance=  current_user.emp_attendances.find(params[:id])
+        @attendance= EmpAttendance.find(params[:id])
     end
 
     def update
-       @attendance =  current_user.emp_attendances.new(attendance_params.merge(user_id: @user.id))
+       @attendance =  EmpAttendance.new(attendance_params.merge(user_id: @user.id))
         if @attendance.update(attendance_params)
             redirect_to  user_emp_attendance_path(@user,@attendance)
         else
@@ -42,7 +42,7 @@ class EmpAttendancesController < ApplicationController
     end
 
     def destroy
-        @attendance =   current_user.emp_attendances.find(params[:id])
+        @attendance =   EmpAttendance.find(params[:id])
         @attendance.destroy
         redirect_to user_emp_attendances_path
     end
