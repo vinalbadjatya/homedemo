@@ -45,7 +45,7 @@
       <td><%= link_to 'Show',   user_project_path(@user,project), class:"btn btn-info btn-sm" %></td>
       <td><%= link_to 'Edit',   edit_user_project_path(@user,project) , class:"btn btn-info btn-sm"%></td>
       <td><%= link_to 'Destroy',  user_project_path(@user,project),
-            method: :delete,
+            method: :delete, remote: true,
             data: { confirm: 'Are you sure?' } , class:"btn btn-info btn-sm"%></td>
     </tr>
     <%end %>

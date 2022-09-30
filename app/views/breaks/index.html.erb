@@ -12,15 +12,13 @@
 <%= form_for "", url: user_breaks_path, role: "search", method: :get do %>
  <% text_field_tag :search, @search_term, placeholder: "search....", class: "form-control"%>
 <% end %><br>
-  
-
-    <th>Starting_date</th>
-    <th>End_date</th>
-    <th>Day</th>
-    <th>Reasons</th>
-    <th></th>
-    <th>Action</th>
-    <th></th>
+  <th>Starting_date</th>
+  <th>End_date</th>
+  <th>Day</th>
+  <th>Reasons</th>
+  <th></th>
+  <th>Action</th>
+  <th></th>
   </tr>
     <% @bks.each do |breaks| %>
     <tr>
@@ -32,12 +30,12 @@
       <td><%= link_to 'Show',user_break_path(@user,breaks),class: "btn btn-info btn-sm" %></td>
       <td><%= link_to 'Edit', edit_user_break_path(@user,breaks),class: "btn btn-info btn-sm" %></button></td>
       <td><%= link_to 'Destroy', user_break_path(@user,breaks),
-              method: :delete,
-              data: { confirm: 'Are you sure?' },class: "btn btn-info btn-sm" %></td>
+        method: :delete, remote: true,
+        data: { confirm: 'Are you sure?' },class: "btn btn-info btn-sm" %></td>
     </tr>
     <% end %>
   <% end %>
-  </div>
+</div>
 </table>
 </div>
 
