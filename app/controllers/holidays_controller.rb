@@ -1,47 +1,74 @@
 class HolidaysController < ApplicationController
+respond_to :html, :json
+load_and_authorize_resource
+def index
+  @holidays = Holiday.all
+  respond_to do |format|
+    format.html 
+    format.js
+  end
+end
 
-    load_and_authorize_resource
+def new
+  @holiday = Holiday.new
+  respond_to do |format|
+    format.html 
+    format.js
+  end
+end
 
-    def new
-        @holiday = Holiday.new
+def show 
+  @holiday = Holiday.find(params[:id])
+  respond_to do |format|
+    format.html 
+    format.js
+  end
+end
+
+def edit 
+  @holiday = Holiday.find(params[:id])
+  respond_to do |format|
+    format.html 
+    format.js
+  end
+end
+
+def create
+  @holiday = Holiday.new(holiday_params)
+  respond_to do |format|
+    if @holiday.save
+      format.html { redirect_to(@holiday) }
+      format.js
+    else
+      format.html { render "new" }
     end
+  end  
+end
 
-
-    def index
-        @holidays = Holiday.all
+def update
+  @holiday = Holiday.find(params[:id])
+    respond_to do |format|
+      if @holiday.update(holiday_params)
+        format.html { redirect_to(@holiday) }
+        format.js
+      else  
+        format.html { render :action => "new" }
+      end
     end
+end
 
-    def show 
-        @holiday = Holiday.find(params[:id])
-    end
+def destroy
+  @holiday = Holiday.find(params[:id]) 
+  @holiday.destroy
+  respond_to do |format|
+    format.html { redirect_to(@holiday) }
+    format.js
+  end
+end
 
-    def create
-        @holiday = Holiday.new(holiday_params)
-        if @holiday.save
-            redirect_to @holiday
-        else
-            render 'new'
-        end
-    end
-
-    def update
-        @holiday = Holiday.find(params[:id])
-        if @holiday.update(holiday_params)
-            redirect_to @holiday
-        else
-            render 'edit'
-        end
-    end
-
-    def destroy
-        @holiday = Holiday.find(params[:id]) 
-        @holiday.destroy
-        redirect_to @holiday
-    end
-
-    private
+private
     
-    def holiday_params
-        params.require(:holiday).permit(:ocassion,:day,:on_date)
-    end
+def holiday_params
+  params.require(:holiday).permit(:ocassion,:day,:on_date)
+end
 end

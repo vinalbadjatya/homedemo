@@ -17,10 +17,10 @@
     <td><%= holiday.on_date %></td>
     <td><%= holiday.ocassion %></td>
     <td><%= holiday.day %></td>
-     <%# <td><%= link_to 'Destroy', holiday_path(holiday), 
-        method: :delete, 
-         data: { confirm: 'Are you sure?' } %> 
-    <%# </tr> %> 
+    <td><%= link_to 'Destroy', holiday_path(holiday), 
+      method: :delete, remote:true,
+      data: { confirm: 'Are you sure?' } %></td> 
+  </tr> 
   <% end %>
 </table>
 </div>

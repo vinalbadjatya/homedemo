@@ -25,16 +25,8 @@ Rails.application.routes.draw do
     resources :projects
   end
   
-  resources :holidays
+   resources :holidays
 
   get 'project/:user_id' => 'users#new', as: :project
 
-  
-  # get "user/index"
-  
-  # post "/please_send_email"
-
-  # get "welcome/email_sent"
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

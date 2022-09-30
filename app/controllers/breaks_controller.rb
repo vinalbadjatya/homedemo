@@ -9,11 +9,11 @@ class BreaksController < ApplicationController
     end
   
     def create
-      @bk = Break.new(break_params.merge(user_id: @user.id))
+      @bk = Break.new(break_params.merge(user_id: @user.id)) 
       if @bk.save!
-          redirect_to user_break_path(@user, @bk)
+        redirect_to user_break_path(@user, @bk)
       else
-          render 'new'
+        render 'new'
       end
     end
   
@@ -53,8 +53,7 @@ class BreaksController < ApplicationController
     private
      
     def get_user 
-        @user = User.find(params[:user_id])
-        
+      @user = User.find(params[:user_id])
     end
 
     def break_params
