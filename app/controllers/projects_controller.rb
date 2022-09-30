@@ -19,14 +19,10 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    respond_to do |format|
-      format.html
-      format.js
-      end
-      if params[:search]
-        @search_term = params[:search]
-        @projects = @projects.search_by(@search_term)
-      end
+    if params[:search]
+      @search_term = params[:search]
+      @projects = @projects.search_by(@search_term)
+    end
   end
 
   def show

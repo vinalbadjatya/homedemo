@@ -1,0 +1,3 @@
+$("#<%= dom_id(@holiday) %>").replaceWith("<%= escape_javascript(render(:partial => @holiday)) %>");
+<% @holiday = Holiday.new 
+$(".edit_holiday").replaceWith("<%= escape_javascript(render(:partial => "form"))%>");
