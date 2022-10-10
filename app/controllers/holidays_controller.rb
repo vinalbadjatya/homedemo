@@ -1,5 +1,4 @@
 class HolidaysController < ApplicationController
-respond_to :html, :json
 load_and_authorize_resource
 def index
   @holidays = Holiday.all
@@ -37,22 +36,25 @@ def create
   @holiday = Holiday.new(holiday_params)
   respond_to do |format|
     if @holiday.save
-      format.html { redirect_to(@holiday) }
+      format.html { redirect_to @holiday }
       format.js
+      # redirect_to @holiday
     else
-      format.html { render "new" }
+      render 'new'
+      # render 'new'
     end
-  end  
+  end
 end
 
 def update
   @holiday = Holiday.find(params[:id])
     respond_to do |format|
       if @holiday.update(holiday_params)
-        format.html { redirect_to(@holiday) }
+        format.html { redirect_to @holiday }
         format.js
+        # redirect_to @holiday
       else  
-        format.html { render :action => "new" }
+        render 'new' 
       end
     end
 end
@@ -61,7 +63,7 @@ def destroy
   @holiday = Holiday.find(params[:id]) 
   @holiday.destroy
   respond_to do |format|
-    format.html { redirect_to(@holiday) }
+    format.html { redirect_to @holiday }
     format.js
   end
 end

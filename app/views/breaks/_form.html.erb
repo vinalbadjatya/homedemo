@@ -1,54 +1,54 @@
 <div class="container">
 <%= form_for [@user,@bk] do |form| %>
 <br>
-
 <div class="col-md-2">
 <h3 style="background-color:powderblue;">Apply Leave</h3>
 </div>
+
 <div class="col-md-3">
 <p>
-    <%= form.label :Mail_To %><br>
-    <%= form.text_field :to, placeholder: "Email", class:"form-control" %>
+  <%= form.label :Mail_To %><br>
+  <%= form.text_field :to, placeholder: "Email", class:"form-control" %>
 </p>
 </div>
+
 <div class="col-md-3">
 <p>
-    <%= form.label :Starting_date%><br>
-    <%= form.text_field :f_date, placeholder: "Starting Date", class:"form-control" %>
+  <%= form.label :Starting_date%><br>
+  <%= form.text_field :f_date, placeholder: "Starting Date", class:"form-control" %>
 </p>
 </div>
 
 <div class="col-md-3"> 
 <p>
-    <%= form.label :end_date %>
-    <%= form.text_field :t_date,  placeholder: "End  Date",class:"form-control" %>
+  <%= form.label :end_date %>
+  <%= form.text_field :t_date,  placeholder: "End  Date",class:"form-control" %>
 </p>
 </div>
 
 <div class="col-md-3">  
 <p>
-    <%= form.label :Day %>
-    <%= form.text_field :day, placeholder: "Day", class:"form-control" %>
+  <%= form.label :Day %>
+  <%= form.text_field :day, placeholder: "Day", class:"form-control" %>
 </p>
- </div>
+</div>
 
- <div class="col-md-3" > 
+<div class="col-md-3" > 
 <p>
-    <%= form.label :Reason%>
-    <%= form.text_field :reason, placeholder: "Reason",class:"form-control" %>
+  <%= form.label :Reason%>
+  <%= form.text_field :reason, placeholder: "Reason",class:"form-control" %>
 </p>
  </div> 
 
 <div class="col-md-3">
 <p>
-  
-    <%= form.number_field :user_id, id: :break_user_id, type: :hidden , value:  current_user.id, class:"form-label" %>
+  <%= form.number_field :user_id, id: :break_user_id, type: :hidden , value:  current_user.id, class:"form-label" %>
 </p> 
 </div>  
 
 <p>
-    <%= form.submit  class: "btn btn-info btn-sm"%>
-    <%= link_to 'Back',  user_breaks_path,   class: "btn btn-info btn-sm" %>
+  <%= form.submit  class: "btn btn-info btn-sm"%>
+  <%= link_to 'Back',  user_breaks_path,   class: "btn btn-info btn-sm" %>
 </p>
 </div>
 <%end%>

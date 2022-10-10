@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable  ,:rememberable, :validatable
+
 
   after_create :set_default_role
 
@@ -26,7 +29,7 @@ class User < ApplicationRecord
     record.errors.add(attr, 'must start with upper case') if value =~ /\A[[:lower:]]/
   end
 
- private 
+  private 
 
   def set_default_role
     self.update(role_id: Role.find_by(code: 'employee').id)
@@ -35,4 +38,6 @@ class User < ApplicationRecord
   def self.search_by(search_term)
     where("LOWER(user_name) LIKE :search_term OR LOWER(email) LIKE :search_term", search_term: "%#{search_term.downcase}")
   end
+
+ 
 end

@@ -15,9 +15,12 @@ def initialize(user)
   can :create ,Salary
   can :update ,Salary
   can :destroy ,Salary
+
   can :read , EmpAttendance
+
   can :read, Holiday
   can :create, Holiday
+  can :update, Holiday
 
   can :read ,Break
   can :update, Break

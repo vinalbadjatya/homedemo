@@ -1,18 +1,16 @@
 class Break < ApplicationRecord
-    belongs_to :user
+  belongs_to :user
+  validates :reason, :day, presence: true
 
-    validates :reason, :day, presence: true
-
-    after_create :break_send
+  after_create :break_send
     
-    private
+  private
 
-    def self.search_by(search_term)
-        where("LOWER(reason) LIKE :search_term", search_term: "%#{search_term.downcase}")
-    end
+  def self.search_by(search_term)
+    where("LOWER(reason) LIKE :search_term", search_term: "%#{search_term.downcase}")
+  end
 
-
-    def break_send 
-        AdminMailer.break_send(self.to).deliver_now
-    end
+  def break_send 
+    AdminMailer.break_send(self.to).deliver_now
+  end
 end
