@@ -5,22 +5,22 @@
 </div>
 <div class= "col-md-7">
 <table class="table table-striped table-hover">
+<tr>
+ <th>DATE</th>
+  <th>Occasion</th>
+  <th>Day</th>
+  <th></th>
+</tr>
+<% @holidays.each do |holiday| %>
   <tr>
-    <th>DATE</th>
-    <th>Occasion</th>
-    <th>Day</th>
-    <th></th>
-  </tr>
-    <% @holidays.each do |holiday| %>
-    <tr>
-    <td><%= holiday.on_date %></td>
-    <td><%= holiday.ocassion %></td>
-    <td><%= holiday.day %></td>
-    <td><%= link_to 'Destroy', holiday_path(holiday), 
-      method: :delete, remote:true,
-      data: { confirm: 'Are you sure?' } %></td> 
+  <td><%= holiday.on_date %></td>
+  <td><%= holiday.ocassion %></td>
+  <td><%= holiday.day %></td>
+  <td><%= link_to 'Destroy', holiday_path(holiday), 
+    method: :delete, remote:true,
+    data: { confirm: 'Are you sure?' } %></td> 
   </tr> 
-  <% end %>
+<% end %>
 </table>
 </div>
 </div>

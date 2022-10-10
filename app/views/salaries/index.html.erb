@@ -10,12 +10,10 @@
   <% text_field_tag :search, @search_term, placeholder: "search....", class: "form-control" %>
   <% end %>
   <tr><br>
-
-    <th>Salary_Amount</th>
-    <th>Date</th>
-    <th>Employee_Name</th>
-    <th>Action</th>
-   
+  <th>Salary_Amount</th>
+  <th>Date</th>
+  <th>Employee_Name</th>
+  <th>Action</th>
   </tr>
     <% @salaries.each do |salary| %>
     <tr>
@@ -23,8 +21,7 @@
       <td><%= salary.salary_amount %></td>
       <td><%= salary.salary_date %></td>
       <td><%= salary.employee_name %></td>
-
-       <td><%= link_to 'Show', user_salary_path(@user,salary),class:"btn btn-info btn-sm" %></td>
+      <td><%= link_to 'Show', user_salary_path(@user,salary),class:"btn btn-info btn-sm" %></td>
        <% if current_user.role.code  == "admin" %>
        <td><%= link_to 'Edit',  edit_user_salary_path(@user,salary), class:"btn btn-info btn-sm" %></td>
        <td><%= link_to 'Destroy', user_salary_path(@user,salary),

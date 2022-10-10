@@ -18,11 +18,11 @@ class EmpAttendance < ApplicationRecord
     #     end
     # end
 
-    def self.search_by(search_term)
-        where("LOWER(project_name) LIKE :search_term", search_term: "%#{search_term.downcase}")
-    end
+  def self.search_by(search_term)
+    where("LOWER(project_name) LIKE :search_term", search_term: "%#{search_term.downcase}")
+  end
 
-    def welcome_send 
-        AdminMailer.welcome_send(self.mail_to).deliver_now
-    end
+  def welcome_send 
+    AdminMailer.welcome_send(self.mail_to).deliver_now
+  end
 end
