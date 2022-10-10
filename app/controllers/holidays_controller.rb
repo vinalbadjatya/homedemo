@@ -1,5 +1,5 @@
 class HolidaysController < ApplicationController
-load_and_authorize_resource
+# load_and_authorize_resource
 def index
   @holidays = Holiday.all
   respond_to do |format|
