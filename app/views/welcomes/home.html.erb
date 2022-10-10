@@ -1,18 +1,18 @@
 
 
 
-<%# <% if current_user %> 
+<% if current_user %> 
 
-<%# You are Logged in as: <%= current_user.email %> 
+You are Logged in as: <%= current_user.email %> 
 
-<%# <%= link_to 'Sign Out' , destroy_user_session_path, method: :delete %> 
+<%= link_to 'Sign Out' , destroy_user_session_path, method: :delete %> 
 
-<%# <% else %>
-<%# <p>Sign In First!!</p> %>
+ <% else %>
+ <p>Sign In First!!</p> %>
  
-<%# <%= link_to 'Sign Up' , new_user_registration_path %>  
+ <%= link_to 'Sign Up' , new_user_registration_path %>  
 
-<%# <%= link_to 'Sign In' , new_user_session_path %>  
+< <%= link_to 'Sign In' , new_user_session_path %>  
 
-<%# <% end %> 
+<% end 
 

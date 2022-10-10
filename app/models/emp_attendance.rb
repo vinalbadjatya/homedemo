@@ -1,15 +1,11 @@
 class EmpAttendance < ApplicationRecord
   belongs_to :user
+  validates :project_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 
-    validates :project_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
-
-    validates :task_description, presence: true
-
-    # before_create :check_status?
-
-    after_create :welcome_send
-
-    private
+  validates :task_description, presence: true
+  # before_create :check_status?
+  after_create :welcome_send
+  private
 
     # def check_status?
     #     # byebug

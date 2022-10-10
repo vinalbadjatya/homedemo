@@ -30,6 +30,8 @@ gem 'jquery-rails'
 gem 'webpacker'
 
 gem 'factory_bot'
+
+gem 'faker'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

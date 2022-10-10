@@ -4,37 +4,32 @@
 <h3 style="background-color:powderblue;"> Status </h3>
 </div>
 <div class= "col-md-8">
-
-  <%= form_for "", url: user_emp_attendances_path, role: "search", method: :get do %>
+<%= form_for "", url: user_emp_attendances_path, role: "search", method: :get do %>
   <% text_field_tag :search, @search_term, placeholder: "search....", class: "form-control" %>
-  <% end %>
+<% end %>
 </div>
 <div class= "col-md-5">
-
 <table class="table table-bordered  table-striped table-hover">
-
-  <tr><br>
+<tr><br>
   <th>Working_hours</th>
   <th>Project_name</th>
-    <th>Task_Description</th>
-    <th>Mail_To</th>
-    <th>Status_Date</th>
-     <th>Actions</th>
+  <th>Task_Description</th>
+  <th>Mail_To</th>
+  <th>Status_Date</th>
+  <th>Actions</th>
+</tr>
+<% @attendances.each do |eattendance| %>
+  <tr>
+    <% if  current_user.role.code == 'admin' || eattendance.user_id == current_user.id  %>
+    <td><%= eattendance.working_hours %></td>
+    <td><%= eattendance.project_name %></td>
+    <td><%= eattendance.task_description%></td>
+    <td><%= eattendance.mail_to%></td>
+    <td><%= eattendance.status_date%></td>
+    <td><%= link_to 'Show',  user_emp_attendance_path(@user,eattendance),class: "btn btn-info btn-sm"%></td>
+    <%end%>
   </tr>
-
-    <% @attendances.each do |eattendance| %>
-    <tr>
-      <% if  current_user.role.code == 'admin' || eattendance.user_id == current_user.id  %>
-      <td><%= eattendance.working_hours %></td>
-      <td><%= eattendance.project_name %></td>
-      <td><%= eattendance.task_description%></td>
-      <td><%= eattendance.mail_to%></td>
-      <td><%= eattendance.status_date%></td>
-      <td><%= link_to 'Show',  user_emp_attendance_path(@user,eattendance),class: "btn btn-info btn-sm"%></td>
-    
-      <%end%>
-    </tr>
-  <% end %>
-  </div>
+<% end %>
+</div>
 </table>
 

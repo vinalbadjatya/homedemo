@@ -1,24 +1,36 @@
 class ProjectsController < ApplicationController
 
   load_and_authorize_resource
+  skip_before_action :verify_authenticity_token
   before_action :get_user
 
   def new
     @project = Project.new
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   def create
     @project = Project.new(project_params.merge(user_id: @user.id))
+    respond_to do |format|
     #byebug
-    if @project.save!
-      redirect_to user_project_path(@user,@project)
-    else
+      if @project.save!
+       format.html {redirect_to user_project_path(@user,@project)}
+       format.js
+      else
       render 'new'
+      end
     end
   end
 
   def index
     @projects = Project.all
+    respond_to do |format|
+      format.html 
+      format.js
+    end
     if params[:search]
       @search_term = params[:search]
       @projects = @projects.search_by(@search_term)
@@ -26,26 +38,40 @@ class ProjectsController < ApplicationController
   end
 
   def show
-      @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.html 
+      format.js
     end
+  end
 
-    def edit
-       @project = Project.find(params[:id])
+  def edit
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.html 
+      format.js
     end
+  end
 
   def update
     @project = Project.new(project_params.merge(user_id: @user.id))
-    if @project.update(project_params)
-      redirect_to user_projects_path(@user,@project)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html {redirect_to user_projects_path(@user,@project)}
+        format.js
+      else
+        render 'edit'
+      end
     end
   end
 
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    redirect_to  user_projects_path
+    respond_to do |format|
+      format.html { redirect_to  user_projects_path }
+      format.js
+    end
   end
 
   private
