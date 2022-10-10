@@ -4,14 +4,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-
   root 'welcomes#home'
   
-
   resources :users do
     resources :breaks
   end
-
 
   resources :users do
     resources :salaries
@@ -25,7 +22,7 @@ Rails.application.routes.draw do
     resources :projects
   end
   
-   resources :holidays
+  resources :holidays
 
   get 'project/:user_id' => 'users#new', as: :project
 

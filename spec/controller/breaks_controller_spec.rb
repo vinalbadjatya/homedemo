@@ -1,4 +1,4 @@
-require 'rails_helper'
+  # require 'rails_helper'
 # describe BreaksController, type: :controller do
 #   describe "GET index" do
 #     it “returns a successful response” do
@@ -8,11 +8,39 @@ require 'rails_helper'
 #   end
 # end
 
-RSpec.describe "breaks", type: :request do
-  get user_path(@user)
-   
-  post breaks_path, break: {day: 2, reason: "nil"}
+# describe BreaksController, type: :controller do
+#   it " return " do
+#   get :index
+#  expect(response).to render_template("index")
+#   end
+#  end
 
-  expect(response.body).to include 'break applied'
-  expect(response).to have_http_status(200)
-end
+# RSpec.describe BreaksController, :type => :controller do
+#   describe "GET index" do
+#     it "has a 200 status code" do
+#       get :index
+#       expect(response.status).to eq(200)
+#     end
+#   end
+# end
+
+# class BreaksController <  ActionController::TestCase
+#   test "index action should be sucess" do
+#     get :index
+#     assert_response :success
+#   end
+# end
+
+# RSpec.describe BreaksController, :type => :controller do
+#   describe "responds to" do
+#     it "responds to html by default" do
+#       post :create, :params {day: 1 reason: "nil"}
+#       expect(response.content_type).to eq "text/html"
+#     end
+
+#     it "responds to custom formats when provided in the params" do
+#       post :create, :params {day: 1 reason: "nil"}
+#       expect(response.content_type).to eq "application/json"
+#     end
+#   end
+# end
